@@ -5,7 +5,7 @@ import api from "./api";
 // })
 
 export const getApiData = async(location:string)=>{
-    const response = await api.get('http://api.weatherapi.com/v1/forecast.json',{
+    const response = await api.get('https://api.weatherapi.com/v1/forecast.json',{
         params:{
             q: location,
             aqi : 'yes',
