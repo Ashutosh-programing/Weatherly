@@ -153,7 +153,17 @@ const Home = () => {
         <span className="text-white text-3xl font-bold">Loading...</span>
       </div>
     );
-  if (error) return <div>Data not found!</div>;
+  if (error) return  <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white p-6">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
+        alt="Data Not Found"
+        className="w-40 h-40 mb-6 animate-pulse"
+      />
+      <h1 className="text-3xl md:text-5xl font-bold mb-2">Oops! Data Not Found</h1>
+      <p className="text-lg text-gray-300 text-center max-w-md">
+        We couldn't find the data you were looking for. Please check your query or try again later.
+      </p>
+    </div>;
   return (
     <div>
       <div className="home-page-container h-screen overflow-x-hidden w-full p-4">
