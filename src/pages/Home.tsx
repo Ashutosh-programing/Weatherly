@@ -69,6 +69,15 @@ const getWeekDay = (date: string) => {
 };
 
 const Home = () => {
+  // const [isMobile,setIsMobile] = useState<boolean>(false);
+  // useEffect(()=>{
+  //   if(window.innerWidth < 400){
+  //     setIsMobile(true);
+  //   }
+  //   else{
+  //     console.log("")
+  //   }
+  // },[])
   const [location, setLocation] = useState<string>("London");
 
   const { data, isLoading, error } = useQuery<WeatherData>({
@@ -189,9 +198,10 @@ const Home = () => {
             .includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10 ">
               <video
-                src="/light_rain.mp4"
+                src={`${window.innerWidth < 400? "/light_rain_m.mp4":'/light_rain.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
+                playsInline
                 loop
                 autoPlay
               ></video>
@@ -206,9 +216,10 @@ const Home = () => {
           ].toString().toLowerCase().includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src="/rain.mp4"
+                src={`${window.innerWidth < 400? "/rain_m.mp4":'/rain.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
+                playsInline
                 loop
                 autoPlay
               ></video>
@@ -217,9 +228,10 @@ const Home = () => {
         {["Mist", "Fog", "Freezing fog"].toString().toLowerCase().includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src="/mist.mp4"
+                src={`${window.innerWidth < 400? "/mist_m.mp4":'/mist.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
+                playsInline
                 loop
                 autoPlay
               ></video>
@@ -231,9 +243,10 @@ const Home = () => {
           ) && (
             <div className="absolute inset-0 -z-10 min-h-screen w-full overflow-scroll">
               <video
-                src="/cloudy.mp4"
+                src={`${window.innerWidth < 400? "/cloudy_m.mp4":'/cloudy.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
+                playsInline
                 loop
                 autoPlay
               ></video>
@@ -242,9 +255,10 @@ const Home = () => {
           {["Sunny", "clear"].toString().toLowerCase().includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src="/sunny.mp4"
+                src={`${window.innerWidth < 400? "/sunny_m.mp4":'/sunny.mp4'}`}
                 className="min-h-screen w-full overflow-scroll object-cover"
                 muted
+                playsInline
                 loop
                 autoPlay
               ></video>
@@ -274,9 +288,10 @@ const Home = () => {
           ].toString().toLowerCase().includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src="/snow.mp4"
+                src={`${window.innerWidth < 400? "/snow_m.mp4":'/snow.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
+                playsInline
                 loop
                 autoPlay
               ></video>
