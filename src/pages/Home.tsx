@@ -198,7 +198,7 @@ const Home = () => {
             .includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10 ">
               <video
-                src={`${window.innerWidth < 400? "/light_rain_m.mp4":'/light_rain.mp4'}`}
+                src={`${window.innerWidth < 400? "/light_rain.mp4":'/light_rain.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -216,7 +216,7 @@ const Home = () => {
           ].toString().toLowerCase().includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src={`${window.innerWidth < 400? "/rain_m.mp4":'/rain.mp4'}`}
+                src={`${window.innerWidth < 400? "/rain.mp4":'/rain.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -228,7 +228,7 @@ const Home = () => {
         {["Mist", "Fog", "Freezing fog"].toString().toLowerCase().includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src={`${window.innerWidth < 400? "/mist_m.mp4":'/mist.mp4'}`}
+                src={`${window.innerWidth < 400? "/mist.mp4":'/mist.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -243,7 +243,7 @@ const Home = () => {
           ) && (
             <div className="absolute inset-0 -z-10 min-h-screen w-full overflow-scroll">
               <video
-                src={`${window.innerWidth < 400? "/cloudy_m.mp4":'/cloudy.mp4'}`}
+                src={`${window.innerWidth < 400? "/cloudy.mp4":'/cloudy.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -255,7 +255,7 @@ const Home = () => {
           {["Sunny", "clear"].toString().toLowerCase().includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src={`${window.innerWidth < 400? "/sunny_m.mp4":'/sunny.mp4'}`}
+                src={`${window.innerWidth < 400? "/sunny.mp4":'/sunny.mp4'}`}
                 className="min-h-screen w-full overflow-scroll object-cover"
                 muted
                 playsInline
@@ -288,7 +288,7 @@ const Home = () => {
           ].toString().toLowerCase().includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src={`${window.innerWidth < 400? "/snow_m.mp4":'/snow.mp4'}`}
+                src={`${window.innerWidth < 400? "/snow.mp4":'/snow.mp4'}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -298,7 +298,7 @@ const Home = () => {
             </div>
           )}
         </div>
-        <div className="first-container flex p-4 items-center justify-end w-full h-12 ">
+        <div className="first-container flex items-center justify-end w-full h-12 ">
           <form
             className="flex items-center gap-2 rounded-lg text-white focus-within:ring-2 focus-within:ring-blue-500 backdrop-blur-3xl w-52 p-1 text-sm"
             onSubmit={handleSubmit(onsubmit)}
@@ -366,7 +366,7 @@ const Home = () => {
         </div>
 
         <div className="fourth-container xl:max-w-7xl mx-auto py-3 flex gap-10 justify-between flex-wrap lg:flex-nowrap  text-white text-sm">
-          <div className="fourth-container-wrapper  w-full lg:max-w-lg  p-2 rounded-xl md:max-h-[453px] h-auto backdrop-blur-xl">
+          <div className="fourth-container-wrapper  w-full lg:max-w-lg p-2 rounded-xl md:max-h-[453px] h-auto backdrop-blur-3xl">
             {data?.forecast.forecastday.map(({ day, date }) => {
               return (
                 <div className="flex mx-auto justify-between items-center py-2" key={date}>
