@@ -10,6 +10,7 @@ import { FaTemperatureLow } from "react-icons/fa";
 import { FaMoon } from "react-icons/fa";
 import { MdDewPoint } from "react-icons/md";
 import { IoEye } from "react-icons/io5";
+import { arr2 } from "../components/common/common";
 
 type FormInput = {
   location: string;
@@ -85,6 +86,7 @@ const Home = () => {
     queryFn: () => getApiData(location),
   });
   const condition = data?.current.condition.text.toLowerCase();
+
 
   const { register, reset, handleSubmit } = useForm<FormInput>();
 
@@ -162,17 +164,23 @@ const Home = () => {
         <span className="text-white text-3xl font-bold">Loading...</span>
       </div>
     );
-  if (error) return  <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white p-6">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
-        alt="Data Not Found"
-        className="w-40 h-40 mb-6 animate-pulse"
-      />
-      <h1 className="text-3xl md:text-5xl font-bold mb-2">Oops! Data Not Found</h1>
-      <p className="text-lg text-gray-300 text-center max-w-md">
-        We couldn't find the data you were looking for. Please check your query or try again later.
-      </p>
-    </div>;
+  if (error)
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white p-6">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
+          alt="Data Not Found"
+          className="w-40 h-40 mb-6 animate-pulse"
+        />
+        <h1 className="text-3xl md:text-5xl font-bold mb-2">
+          Oops! Data Not Found
+        </h1>
+        <p className="text-lg text-gray-300 text-center max-w-md">
+          We couldn't find the data you were looking for. Please check your
+          query or try again later.
+        </p>
+      </div>
+    );
   return (
     <div>
       <div className="home-page-container h-screen overflow-x-hidden w-full p-4">
@@ -191,14 +199,17 @@ const Home = () => {
             "Heavy freezing drizzle",
             "Moderate or heavy rain shower",
             "Torrential rain shower",
-        
           ]
             .toString()
             .toLowerCase()
             .includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10 ">
               <video
-                src={`${window.innerWidth < 400? "/light_rain.mp4":'/light_rain.mp4'}`}
+                src={`${
+                  window.innerWidth < 400
+                    ? "/light_rain.mp4"
+                    : "/light_rain.mp4"
+                }`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -213,10 +224,13 @@ const Home = () => {
             "Moderate or heavy rain with thunder",
             "Heavy rain at times",
             "Moderate or heavy freezing rain",
-          ].toString().toLowerCase().includes(condition as string) && (
+          ]
+            .toString()
+            .toLowerCase()
+            .includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src={`${window.innerWidth < 400? "/rain.mp4":'/rain.mp4'}`}
+                src={`${window.innerWidth < 400 ? "/rain.mp4" : "/rain.mp4"}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -225,10 +239,13 @@ const Home = () => {
               ></video>
             </div>
           )}
-        {["Mist", "Fog", "Freezing fog"].toString().toLowerCase().includes(condition as string) && (
+          {["Mist", "Fog", "Freezing fog"]
+            .toString()
+            .toLowerCase()
+            .includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src={`${window.innerWidth < 400? "/mist.mp4":'/mist.mp4'}`}
+                src={`${window.innerWidth < 400 ? "/mist.mp4" : "/mist.mp4"}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -237,13 +254,15 @@ const Home = () => {
               ></video>
             </div>
           )}
-
-          {["Partly Cloudy", "Cloudy", "Overcast"].toString().toLowerCase().includes(
-            condition as string
-          ) && (
+          {["Partly Cloudy", "Cloudy", "Overcast"]
+            .toString()
+            .toLowerCase()
+            .includes(condition as string) && (
             <div className="absolute inset-0 -z-10 min-h-screen w-full overflow-scroll">
               <video
-                src={`${window.innerWidth < 400? "/cloudy.mp4":'/cloudy.mp4'}`}
+                src={`${
+                  window.innerWidth < 400 ? "/cloudy.mp4" : "/cloudy.mp4"
+                }`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -252,10 +271,13 @@ const Home = () => {
               ></video>
             </div>
           )}
-          {["Sunny", "clear"].toString().toLowerCase().includes(condition as string) && (
+          {["Sunny", "clear"]
+            .toString()
+            .toLowerCase()
+            .includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src={`${window.innerWidth < 400? "/sunny.mp4":'/sunny.mp4'}`}
+                src={`${window.innerWidth < 400 ? "/sunny.mp4" : "/sunny.mp4"}`}
                 className="min-h-screen w-full overflow-scroll object-cover"
                 muted
                 playsInline
@@ -285,10 +307,13 @@ const Home = () => {
             "Moderate or heavy showers of ice pellets",
             "Moderate or heavy snow with thunder",
             "Blizzard",
-          ].toString().toLowerCase().includes(condition as string) && (
+          ]
+            .toString()
+            .toLowerCase()
+            .includes(condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
-                src={`${window.innerWidth < 400? "/snow.mp4":'/snow.mp4'}`}
+                src={`${window.innerWidth < 400 ? "/snow.mp4" : "/snow.mp4"}`}
                 className="w-full min-h-screen overflow-scroll object-cover"
                 muted
                 playsInline
@@ -297,6 +322,12 @@ const Home = () => {
               ></video>
             </div>
           )}
+          ,
+{!arr2.map(e => e.toLowerCase()).includes(condition as string) && (
+  <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
+    <div className="min-h-screen w-full bg-gradient-to-r from-purple-700 via-indigo-800 to-blue-700 bg-[length:200%_200%] animate-gradient"></div>
+  </div>
+)}
         </div>
         <div className="first-container flex items-center justify-end w-full h-12 ">
           <form
@@ -354,7 +385,7 @@ const Home = () => {
             {data?.forecast.forecastday[0].hour.map((e) => {
               return (
                 <div className="md:min-w-32 min-w-20" key={e.time}>
-                  <p className="mb-3">{e.time.split(' ')[1]}</p>
+                  <p className="mb-3">{e.time.split(" ")[1]}</p>
                   <p className="mb-3">
                     <img className="h-9 w-9" src={e.condition.icon} alt="" />
                   </p>
@@ -369,16 +400,23 @@ const Home = () => {
           <div className="fourth-container-wrapper  w-full lg:max-w-lg p-2 rounded-xl md:max-h-[453px] h-auto backdrop-blur-3xl">
             {data?.forecast.forecastday.map(({ day, date }) => {
               return (
-                <div className="flex mx-auto justify-between items-center py-2" key={date}>
+                <div
+                  className="flex mx-auto justify-between items-center py-2"
+                  key={date}
+                >
                   <p className="md:w-20 w-5 text-center">{getWeekDay(date)}</p>
                   <p className="w-10  flex items-center justify-center ">
                     <img className="h-7 w-7" src={day.condition.icon} alt="" />
                   </p>
-                  <p className="md:w-24 w-10 text-center">min : {day.mintemp_c} ° </p>
+                  <p className="md:w-24 w-10 text-center">
+                    min : {day.mintemp_c} °{" "}
+                  </p>
                   <div className="w-24 sm:w-44 relative  h-1 bg-gradient-to-r from-blue-500 via-yellow-400 to-red-500 rounded-full overflow-hidden">
                     <div className="absolute inset-0 bg-white/30 animate-pulse"></div>
                   </div>
-                  <p className="md:w-24 w-12 text-center ">max : {day.maxtemp_c} °</p>
+                  <p className="md:w-24 w-12 text-center ">
+                    max : {day.maxtemp_c} °
+                  </p>
                 </div>
               );
             })}
@@ -393,7 +431,9 @@ const Home = () => {
                   <div className="flex gap-2 items-center text-gray-300">
                     <p className="">{e.icon}</p> <p className="">{e.name}</p>
                   </div>
-                  <p className="min-[468]:text-2xl text-xl pb-9">{e.content1}</p>
+                  <p className="min-[468]:text-2xl text-xl pb-9">
+                    {e.content1}
+                  </p>
                   <p className="text-sm">{e.content2}</p>
                 </div>
               );
@@ -406,7 +446,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
-
