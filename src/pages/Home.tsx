@@ -322,7 +322,6 @@ const Home = () => {
               ></video>
             </div>
           )}
-          ,
 {!arr2.map(e => e.toLowerCase()).includes(condition as string) && (
   <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
     <div className="min-h-screen w-full bg-gradient-to-r from-purple-700 via-indigo-800 to-blue-700 bg-[length:200%_200%] animate-gradient"></div>
