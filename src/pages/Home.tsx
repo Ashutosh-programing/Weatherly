@@ -389,7 +389,7 @@ const Home = () => {
                   <p className="mb-3">
                     <img className="h-9 w-9" src={e.condition.icon} alt="" />
                   </p>
-                  <p>{e.temp_c}</p>
+                  <p>{e.temp_c} °</p>
                 </div>
               );
             })}
