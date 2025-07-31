@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getApiData } from "../Api/MainAPI";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { GiSunrise } from "react-icons/gi";
 import { GiWaterDrop } from "react-icons/gi";
@@ -86,7 +86,6 @@ const Home = () => {
     queryFn: () => getApiData(location),
   });
   const condition = data?.current.condition.text.toLowerCase();
-
 
   const { register, reset, handleSubmit } = useForm<FormInput>();
 
@@ -199,10 +198,7 @@ const Home = () => {
             "Heavy freezing drizzle",
             "Moderate or heavy rain shower",
             "Torrential rain shower",
-          ]
-            .toString()
-            .toLowerCase()
-            .includes(condition as string) && (
+          ].some(e =>e.toLowerCase()===condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10 ">
               <video
                 src={`${
@@ -220,14 +216,12 @@ const Home = () => {
           )}
           {[
             "Thundery outbreaks possible",
+            "Thundery outbreaks in nearby",
             "Patchy light rain with thunder",
             "Moderate or heavy rain with thunder",
             "Heavy rain at times",
             "Moderate or heavy freezing rain",
-          ]
-            .toString()
-            .toLowerCase()
-            .includes(condition as string) && (
+          ].some(e =>e.toLowerCase()===condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
                 src={`${window.innerWidth < 400 ? "/rain.mp4" : "/rain.mp4"}`}
@@ -239,10 +233,7 @@ const Home = () => {
               ></video>
             </div>
           )}
-          {["Mist", "Fog", "Freezing fog"]
-            .toString()
-            .toLowerCase()
-            .includes(condition as string) && (
+          {["Mist", "Fog", "Freezing fog"].some(e =>e.toLowerCase()===condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
                 src={`${window.innerWidth < 400 ? "/mist.mp4" : "/mist.mp4"}`}
@@ -254,10 +245,7 @@ const Home = () => {
               ></video>
             </div>
           )}
-          {["Partly Cloudy", "Cloudy", "Overcast"]
-            .toString()
-            .toLowerCase()
-            .includes(condition as string) && (
+          {["Partly Cloudy", "Cloudy", "Overcast"].some((e)=>e.toLowerCase()===condition as string) && (
             <div className="absolute inset-0 -z-10 min-h-screen w-full overflow-scroll">
               <video
                 src={`${
@@ -271,10 +259,7 @@ const Home = () => {
               ></video>
             </div>
           )}
-          {["Sunny", "clear"]
-            .toString()
-            .toLowerCase()
-            .includes(condition as string) && (
+          {["Sunny", "clear"].some(e =>e.toLowerCase()===condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
                 src={`${window.innerWidth < 400 ? "/sunny.mp4" : "/sunny.mp4"}`}
@@ -286,7 +271,8 @@ const Home = () => {
               ></video>
             </div>
           )}
-          {[
+
+        {[
             "Light snow",
             "Moderate snow",
             "Heavy snow",
@@ -307,10 +293,7 @@ const Home = () => {
             "Moderate or heavy showers of ice pellets",
             "Moderate or heavy snow with thunder",
             "Blizzard",
-          ]
-            .toString()
-            .toLowerCase()
-            .includes(condition as string) && (
+          ].some(e => e.toLowerCase()===condition as string) && (
             <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
               <video
                 src={`${window.innerWidth < 400 ? "/snow.mp4" : "/snow.mp4"}`}
@@ -322,6 +305,8 @@ const Home = () => {
               ></video>
             </div>
           )}
+
+
 {!arr2.map(e => e.toLowerCase()).includes(condition as string) && (
   <div className="absolute inset-0 overflow-scroll min-h-screen w-full -z-10">
     <div className="min-h-screen w-full bg-gradient-to-r from-purple-700 via-indigo-800 to-blue-700 bg-[length:200%_200%] animate-gradient"></div>
@@ -396,7 +381,8 @@ const Home = () => {
         </div>
 
         <div className="fourth-container xl:max-w-7xl mx-auto py-3 flex gap-10 justify-between flex-wrap lg:flex-nowrap  text-white text-sm">
-          <div className="fourth-container-wrapper  w-full lg:max-w-lg p-2 rounded-xl md:max-h-[453px] h-auto backdrop-blur-3xl">
+          <div className="fourth-container-wrapper  w-full lg:max-w-lg p-2 rounded-xl h-auto  md:h-40 backdrop-blur-3xl"> 
+           {/* md:max-h-[453px] */}
             {data?.forecast.forecastday.map(({ day, date }) => {
               return (
                 <div
