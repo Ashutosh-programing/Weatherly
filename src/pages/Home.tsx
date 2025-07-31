@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getApiData } from "../Api/MainAPI";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { GiSunrise } from "react-icons/gi";
 import { GiWaterDrop } from "react-icons/gi";
@@ -70,15 +70,7 @@ const getWeekDay = (date: string) => {
 };
 
 const Home = () => {
-  // const [isMobile,setIsMobile] = useState<boolean>(false);
-  // useEffect(()=>{
-  //   if(window.innerWidth < 400){
-  //     setIsMobile(true);
-  //   }
-  //   else{
-  //     console.log("")
-  //   }
-  // },[])
+
   const [location, setLocation] = useState<string>("London");
 
   const { data, isLoading, error } = useQuery<WeatherData>({
